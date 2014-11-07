@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="215.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditValueController">
+   <children>
+      <Label alignment="CENTER" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="40.0" text="Редактиране количество на артикул" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label focusTraversable="false" layoutX="6.0" layoutY="40.0" text="Име на артикула" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label focusTraversable="false" layoutX="10.0" layoutY="107.0" text="Ново количество" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="105.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" focusTraversable="false" layoutX="25.0" layoutY="66.0" prefHeight="35.0" prefWidth="357.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="value" focusTraversable="false" layoutX="10.0" layoutY="121.0" prefHeight="35.0" prefWidth="357.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="125.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <Button focusTraversable="false" layoutX="294.0" layoutY="164.0" mnemonicParsing="false" onAction="#edit" prefHeight="35.0" text="Редактираи" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Button>
+      <Button focusTraversable="false" layoutX="221.0" layoutY="165.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" text="Откажи" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="115.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="dim" focusTraversable="false" layoutX="240.0" layoutY="111.0" prefHeight="35.0" prefWidth="95.0" style="-fx-font-size: 15px;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0" />
+      <Label focusTraversable="false" layoutX="326.0" layoutY="95.0" text="M.E." AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="105.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
