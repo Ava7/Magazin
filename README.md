@@ -1,1 +1,1 @@
-Source code a simple program for shop
+Source code a simple Java program for shop
