@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="215.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditPriceController">
+<AnchorPane prefHeight="215.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditValueScreenController">
    <children>
-      <Label alignment="CENTER" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="40.0" text="Редактиране цената на артикул" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="40.0" text="Редактиране количество на артикул" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -19,7 +20,7 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label focusTraversable="false" layoutX="10.0" layoutY="107.0" text="Нова цена" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="105.0">
+      <Label focusTraversable="false" layoutX="10.0" layoutY="107.0" text="Ново количество" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="105.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -34,7 +35,7 @@
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <Button focusTraversable="false" layoutX="334.0" layoutY="161.0" mnemonicParsing="false" onAction="#edit" prefHeight="35.0" text="Редактираи" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <Button focusTraversable="false" layoutX="294.0" layoutY="164.0" mnemonicParsing="false" onAction="#edit" prefHeight="35.0" text="Редактираи" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>

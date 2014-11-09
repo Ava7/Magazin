@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 public class Edit {
     
     public void editName() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/EditName.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/EditNameScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         
@@ -24,7 +24,7 @@ public class Edit {
     }
     
     public void editValue() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/EditValue.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/EditValueScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         
@@ -37,7 +37,7 @@ public class Edit {
     }
     
     public void editPrice() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/EditPrice.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/EditPriceScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         
@@ -50,7 +50,7 @@ public class Edit {
     }
     
     public void deleteArticle() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/DeleteArticle.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/DeleteArticleScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         

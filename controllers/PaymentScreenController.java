@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class PaymentController implements Initializable {
+public class PaymentScreenController implements Initializable {
 
     @FXML
     private TableView<VP> table;

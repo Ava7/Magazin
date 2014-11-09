@@ -1,7 +1,7 @@
 package controllers;
 
 import classes.DBConnection;
-import classes.DS;
+import classes.DD;
 import classes.Messages;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -20,48 +20,47 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class DailySalesController implements Initializable {
+public class DailyDeliveriesScreenController implements Initializable {
 
     @FXML
-    public TableView<DS> table;
+    private TableView<DD> table;
     @FXML
-    private TableColumn<DS, Integer> articleId;
+    private TableColumn<DD, Integer> articleId;
     @FXML
-    private TableColumn<DS, String> articleName;
+    private TableColumn<DD, String> articleName;
     @FXML
-    private TableColumn<DS, Double> articleValue;
+    private TableColumn<DD, Double> articleValue;
     @FXML
-    private TableColumn<DS, String> articleUnit;
+    private TableColumn<DD, String> articleUnit;
     @FXML
-    private TableColumn<DS, Double> articlePrice;
+    private TableColumn<DD, Double> articlePrice;
     @FXML
-    private TableColumn<DS, String> articleCurrency;
+    private TableColumn<DD, String> articleCurrency;
     @FXML
-    private TableColumn<DS, Double> totalPrice;
+    private TableColumn<DD, Double> totalPrice;
     @FXML
     private TextField total;
-    private final ObservableList<DS> data = FXCollections.observableArrayList();
+    private final ObservableList<DD> data = FXCollections.observableArrayList();
     LocalDate date = LocalDate.now();
     private int selectedId = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadTableData();
-        sumDailySale();
+        sumDailyDeliveryStock();
     }
 
     @FXML
     private void deleteSelected(ActionEvent event) {
         if (selectedId == 0) {
-            Messages.errorMessage("Иберете продажба");
+            Messages.errorMessage("Иберете доставка");
         } else {
-
             try {
-                String select = "SELECT article.articlename as aan, article.articlevalue as aav, totalprice, dailysale.articlevalue as dav, total "
+                String select = "SELECT article.articlename as aan, article.articlevalue as aav, totalprice, dailydelivery.articlevalue as dav, total "
                         + "FROM article "
-                        + "JOIN dailysale "
-                        + "ON article.articlename=dailysale.articlename "
-                        + "WHERE dailysale.id = " + selectedId + "";
+                        + "JOIN dailydelivery "
+                        + "ON article.articlename=dailydelivery.articlename "
+                        + "WHERE dailydelivery.id = " + selectedId + "";
                 ResultSet rs = DBConnection.connect().executeQuery(select);
                 if (rs.next()) {
 
@@ -70,13 +69,13 @@ public class DailySalesController implements Initializable {
                     double aCurrentTotalprice = rs.getDouble("totalprice");
                     double dCurrentValue = rs.getDouble("dav");
                     double dCurrentTotalprice = rs.getDouble("total");
-
-                    double aNewValue = dCurrentValue + aCurrentValue;
+                    
+                    double aNewValue = aCurrentValue - dCurrentValue;
                     aNewValue = (double) Math.round(aNewValue * 100.0) / 100.0;
-
-                    double aNewTotal = aCurrentTotalprice + dCurrentTotalprice;
-                    aNewTotal = (double) Math.round(aNewTotal * 100.0) / 100.0;
-
+                    
+                    double aNewTotal = aCurrentTotalprice - dCurrentTotalprice;
+                    aNewValue = (double) Math.round(aNewValue * 100.0) / 100.0;
+                    
                     rs.close();
 
                     try {
@@ -87,7 +86,7 @@ public class DailySalesController implements Initializable {
                     }
 
                     try {
-                        String sqlDelete = "DELETE FROM dailysale WHERE id = " + selectedId + "";
+                        String sqlDelete = "DELETE FROM dailydelivery WHERE id = " + selectedId + "";
                         DBConnection.connect().execute(sqlDelete);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -96,7 +95,7 @@ public class DailySalesController implements Initializable {
                     selectedId = 0;
                     data.clear();
                     loadTableData();
-                    sumDailySale();
+                    sumDailyDeliveryStock();
                     Messages.warningMessage("Обновете данните в главния списък с артикули");
 
                 }
@@ -108,7 +107,7 @@ public class DailySalesController implements Initializable {
 
     private void loadTableData() {
         try {
-            String sqlSelect = "SELECT * FROM dailysale ORDER BY id ASC";
+            String sqlSelect = "SELECT * FROM dailydelivery ORDER BY id ASC";
             ResultSet rs = DBConnection.connect().executeQuery(sqlSelect);
             while (rs.next()) {
                 int a = rs.getInt("id");
@@ -118,7 +117,7 @@ public class DailySalesController implements Initializable {
                 double e = rs.getDouble("articleprice");
                 String f = rs.getString("articlecurrency");
                 double g = rs.getDouble("total");
-                DS list = new DS(a, b, c, d, e, f, g);
+                DD list = new DD(a, b, c, d, e, f, g);
                 data.add(list);
             }
         } catch (SQLException e) {
@@ -139,15 +138,15 @@ public class DailySalesController implements Initializable {
 
     @FXML
     private void selectItem(MouseEvent event) {
-        DS article = (DS) table.getSelectionModel().getSelectedItem();
+        DD article = (DD) table.getSelectionModel().getSelectedItem();
         if (article != null) {
             selectedId = article.getID();
         }
     }
 
-    private void sumDailySale() {
+    private void sumDailyDeliveryStock() {
         try {
-            String sql = "SELECT sum(total) as t FROM dailysale";
+            String sql = "SELECT sum(total) as t FROM dailydelivery";
             ResultSet rs = DBConnection.connect().executeQuery(sql);
             while (rs.next()) {
                 double a = rs.getDouble("t");

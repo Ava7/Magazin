@@ -12,9 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import static controllers.ScreenController.isNumeric;
+import static controllers.MainScreenController.isNumeric;
 
-public class EditPriceController implements Initializable {
+public class EditValueScreenController implements Initializable {
 
     @FXML
     private TextField name;
@@ -25,7 +25,7 @@ public class EditPriceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dim.getItems().addAll("лв.", "usd", "eur");
+        dim.getItems().addAll("бр.", "кг.", "л.", "м.");
     }
 
     @FXML
@@ -39,30 +39,28 @@ public class EditPriceController implements Initializable {
         if ((n.isEmpty())) {
             Messages.errorMessage("Попълнете име на артикула");
         } else if (v.isEmpty()) {
-            Messages.errorMessage("Попълнете цена на артикула");
+            Messages.errorMessage("Попълнете количество на артикула");
         } else if (isNumeric(v) == false) {
-            Messages.errorMessage("Попълнете число в полето за цена");
+            Messages.errorMessage("Попълнете число в полето за количество");
         } else if (dim.getSelectionModel().isEmpty()) {
-            Messages.errorMessage("Изберете дименсия към цена");
+            Messages.errorMessage("Изберете дименсия към количество");
         } else {
             try {
-                String sql = "SELECT articlename, articlevalue FROM article WHERE articlename = '" + n + "'";
+                String sql = "SELECT articlename, articleprice FROM article WHERE articlename = '" + n + "'";
                 ResultSet rs = DBConnection.connect().executeQuery(sql);
                 if (rs.next()) {
 
+                    double p = rs.getDouble("articleprice");
                     double vv = Double.parseDouble(String.valueOf(v));
-                    double p = rs.getDouble("articlevalue");
-                    double t = vv * p;
+                    double t = p * vv;
                     t = (double) Math.round(t * 100.0) / 100.0;
                     rs.close();
 
                     try {
-                        String sqlUpdate = "UPDATE article SET articleprice = " + vv + ", articlecurrency = '" + d + "', totalprice = " + t + " WHERE articlename = '" + n + "' ";
+                        String sqlUpdate = "UPDATE article SET articlevalue = " + vv + ", articleunit = '" + d + "', totalprice = " + t + " WHERE articlename = '" + n + "' ";
                         DBConnection.connect().execute(sqlUpdate);
-
                         Messages.warningMessage("Обновете данните в главния списък с артикули");
                         ((Node) (event.getSource())).getScene().getWindow().hide();
-
                     } catch (SQLException e) {
                         System.out.println(e.getMessage());
                     }
@@ -73,12 +71,10 @@ public class EditPriceController implements Initializable {
                 System.out.println(e.getMessage());
             }
         }
-
     }
 
     @FXML
     private void cancel(ActionEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
 }

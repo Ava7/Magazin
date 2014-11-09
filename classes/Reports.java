@@ -20,7 +20,7 @@ import javafx.stage.StageStyle;
 public class Reports {
 
     public void referenceSales() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/DailySales.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/DailySalesScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
@@ -33,7 +33,7 @@ public class Reports {
     }
 
     public void referenceSupply() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/DailyDeliveries.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/DailyDeliveriesScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 

@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 public class Help {
     
      public void helpWindow() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/Help.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/screens/HelpScreen.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         

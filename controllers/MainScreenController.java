@@ -34,7 +34,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class ScreenController implements Initializable {
+public class MainScreenController implements Initializable {
 
     @FXML
     private TextField totalInStore;
@@ -328,7 +328,7 @@ public class ScreenController implements Initializable {
         Scene scene = new Scene(childLayout);
         stage.setScene(scene);
 
-        PaymentController cc = ((PaymentController) loader.getController());
+        PaymentScreenController cc = ((PaymentScreenController) loader.getController());
         cc.setRootButton(paymentButton);
 
         stage.setTitle("Клиентска сметка");

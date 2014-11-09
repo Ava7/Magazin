@@ -9,11 +9,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="680.0" minWidth="800.0" prefHeight="680.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ScreenController">
+<AnchorPane minHeight="680.0" minWidth="800.0" prefHeight="680.0" prefWidth="800.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
     <children>
-        <Label alignment="TOP_CENTER" focusTraversable="false" prefHeight="50.0" prefWidth="800.0" text="М А Г А З И Н" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <Label alignment="TOP_CENTER" focusTraversable="false" layoutY="30.0" prefHeight="47.0" prefWidth="800.0" text="М А Г А З И Н" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
             <font>
-                <Font name="Times New Roman" size="50.0" />
+                <Font name="Times New Roman" size="46.0" />
             </font>
         </Label>
         <TextField fx:id="searchField" focusTraversable="false" layoutY="75.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" onKeyReleased="#searching" prefHeight="35.0" prefWidth="292.0" promptText="Търсене на артикули" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="505.0" AnchorPane.topAnchor="80.0">
