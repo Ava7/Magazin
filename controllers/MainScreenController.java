@@ -323,7 +323,7 @@ public class MainScreenController implements Initializable {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/screens/Payment.fxml"));
+        loader.setLocation(getClass().getResource("/screens/PaymentScreen.fxml"));
         Pane childLayout = (Pane) loader.load();
         Scene scene = new Scene(childLayout);
         stage.setScene(scene);
