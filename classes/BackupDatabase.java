@@ -14,10 +14,6 @@ public class BackupDatabase {
     private static final File source = new File("Store");
     private static final File destination = new File("Backup/Store");
 
-    public static void main(String[] args) throws IOException {
-        directoryExists();
-    }
-
     public static void directoryExists() throws IOException {
         if (destination.exists() && destination.isDirectory()) {
             deleteDirectory(destination);
@@ -28,7 +24,7 @@ public class BackupDatabase {
         }
     }
 
-    public static void createDiectory() {
+    private static void createDiectory() {
         try {
             destination.mkdir();
         } catch (Exception e) {
@@ -36,7 +32,7 @@ public class BackupDatabase {
         }
     }
 
-    public static void deleteDirectory(File destination) {
+    private static void deleteDirectory(File destination) {
         if (destination.exists()) {
             File[] files = destination.listFiles();
             for (File file : files) {
@@ -49,7 +45,7 @@ public class BackupDatabase {
         }
     }
 
-    public static void copyFolder(File source, File destination) {
+    private static void copyFolder(File source, File destination) {
         try {
             FileUtils.copyDirectory(source, destination);
         } catch (IOException e) {
