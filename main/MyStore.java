@@ -1,11 +1,16 @@
 package main;
 
+import classes.BackupDatabase;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MyStore extends Application {
 
@@ -19,6 +24,13 @@ public class MyStore extends Application {
         stage.setTitle("Магазин");
         stage.getIcons().add(new Image("/images/shop.png"));
         stage.show();
+        stage.setOnCloseRequest((WindowEvent we) -> {
+            try {
+                BackupDatabase.directoryExists();
+            } catch (IOException ex) {
+                Logger.getLogger(MyStore.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     public static void main(String[] args) {
