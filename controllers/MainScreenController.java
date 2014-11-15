@@ -1,6 +1,7 @@
 package controllers;
 
 import classes.Article;
+import classes.BackupDatabase;
 import classes.Edit;
 import classes.DBConnection;
 import classes.Help;
@@ -385,7 +386,8 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML
-    private void exitProgram(ActionEvent event) {
+    private void exitProgram(ActionEvent event) throws IOException {
+        BackupDatabase.directoryExists();
         Platform.exit();
     }
 
