@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,14 +24,15 @@ public class MyStore extends Application {
         stage.setScene(scene);
         stage.setTitle("Магазин");
         stage.getIcons().add(new Image("/images/shop.png"));
-        stage.show();
-        stage.setOnCloseRequest((WindowEvent we) -> {
+        stage.setOnShown((WindowEvent event) -> {
             try {
                 BackupDatabase.directoryExists();
             } catch (IOException ex) {
                 Logger.getLogger(MyStore.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        stage.show();
+        
     }
 
     public static void main(String[] args) {

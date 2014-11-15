@@ -387,7 +387,6 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private void exitProgram(ActionEvent event) throws IOException {
-        BackupDatabase.directoryExists();
         Platform.exit();
     }
 
